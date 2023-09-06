@@ -1,78 +1,126 @@
-# Phase 3 Project: CLI
+# Task Manager CLI
 
-## Learning Goals
+A command-line interface (CLI) application for managing tasks with a relational database and sorting algorithm.
 
-- Configure environments with project-specific parameters using Pipenv.
-- Import and use external libraries.
-- Use SQLAlchemy ORM and Alembic to create a database schema and update it as you
-  continue to build your CLI.
-- Use SQLAlchemy ORM to join multiple tables to each other using one-to-one,
-  one-to-many, many-to-many relationships.
-- Use `list`s, `dict`s, and `tuple`s in appropriate contexts.
-- Exercise best practices in CLI design.
+## Table of Contents
 
-***
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Commands](#commands)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Key Vocab
+## Features
 
-- **Command Line**: a text-based interface that is built into your computer's
-operating system. It allows you to access the files and applications on your
-computer manually or through scripts.
-- **Terminal**: the application in Mac OS that allows you to access the command
-line.
-- **Command Shell/Powershell**: the applications in Windows that allow you to access
-the command line.
-- **Command-Line Interface (CLI)**: a text-based interface used to run programs,
-manage files and interact with objects in memory. As the name suggests, it is
-run from the command line.
+- Create and manage user accounts.
+- Add, update, and delete tasks.
+- Categorize tasks and list them by category.
+- Sort tasks using a QuickSort algorithm.
+- Organize tasks by user.
+- SQLite database for data storage.
 
-***
+## Project Structure
 
-## Instructions
+The project is organized into modules and follows best practices:
 
-Welcome to the end of Phase 3! You've learned about a lot in this unit:
+task_manager_cli/
+├── task_manager/
+│ ├── init.py
+│ ├── models.py
+│ ├── database.py
+│ └── tasks.py
+├── cli.py
+└── Pipfile
 
-- Python fundamentals.
-- Data structures (and more recently, algorithms).
-- Object-oriented programming.
-- Object inheritance.
-- Class attributes and methods.
-- Configuring applications.
-- SQL fundamentals.
-- Table relations in SQL.
-- Object-relational mapping with Python.
-- Object-relational mapping with SQLAlchemy.
-- Building CLIs.
+bash
+Copy code
 
-In this project, we're going to use these skills to create a CLI. We want you to
-display knowledge of as much from Phase 3 as you can- you won't be able to fit
-everything in, but we'll expect to see:
+- **task_manager:** Contains SQLAlchemy models, database configuration, and task-related functions.
+- **cli.py:** The main CLI application with user commands.
+- **Pipfile:** Dependency management file for Pipenv.
 
-- A CLI application that solves a real-world problem and adheres to best
-  practices.
-- A database created and modified with SQLAlchemy ORM with 3+ related tables.
-- A well-maintained virtual environment using Pipenv.
-- Proper package structure in your application.
-- Use of `list`s, `dict`s, and `tuple`s.
+## Getting Started
 
-***
+### Prerequisites
 
-## Tips and Tricks?
+Make sure you have the following software installed:
 
-- Think about your database schema before you begin- migrations are a pain!
-- Keep your Python objects, SQLAlchemy objects, and CLI script in separate
-  modules.
-- If you get stuck trying to accomplish a specific task, check online to see if
-  there's a Python library that will make it easier.
-- Consider using [Click][click] or [Fire][fire] to take care of basic CLI tasks
-  for you.
+- Python 3.x
+- Pipenv
 
-***
+### Installation
 
-## Resources
+1. Clone the repository:
 
-- [Click documentation][click]
-- [The Python Fire Guide][fire]
+   ```bash
+   git clone https://github.com/your-username/task-manager-cli.git
+   cd task-manager-cli
+2. Create a virtual environment and install dependencies:
 
-[click]: https://click.palletsprojects.com/en/8.1.x/
-[fire]: https://google.github.io/python-fire/guide/
+bash
+Copy code
+pipenv --python 3.8  # Choose your Python version
+pipenv install
+# Usage
+
+To use the Task Manager CLI, follow these steps:
+
+* Create the database tables:
+
+bash
+Copy code
+pipenv run python cli.py
+* Add a user:
+
+bash
+Copy code
+pipenv run python cli.py add_user
+* Add tasks:
+
+bash
+Copy code
+pipenv run python cli.py add_task
+* List tasks:
+
+bash
+Copy code
+pipenv run python cli.py list_tasks
+
+For more commands and options, see the Commands section.
+
+# Commands
+
+* add_user: Add a user to the system.
+
+bash
+Copy code
+pipenv run python cli.py add_user --username USERNAME
+* add_task: Add a task for a user.
+
+bash
+Copy code
+pipenv run python cli.py add_task --title TASK_TITLE --description TASK_DESCRIPTION --username USER_USERNAME --category TASK_CATEGORY
+* list_tasks: List tasks for a user.
+
+bash
+Copy code
+pipenv run python cli.py list_tasks --username USER_USERNAME
+
+For more commands and options, refer to the CLI help messages.
+
+# Contributing 
+
+Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
+
+* Fork the repository.
+* Create a new branch for your feature or bug fix.
+* Make your changes and write tests if applicable.
+* Ensure all tests pass.
+* Create a pull request with a clear description of your changes.
+# License
+
+This project is licensed under the  MIT License.
